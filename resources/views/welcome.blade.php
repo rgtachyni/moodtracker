@@ -51,9 +51,10 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Daily Jurnal</a></li>
-                    <li><a href="#about">Mood Journey</a></li>
-                    <li><a href="#services">Mood Wave</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#jurnal" class="active">Daily Jurnal</a></li>
+                    <li><a href="#mood">Mood Journey</a></li>
+                    <li><a href="#wave">Mood Wave</a></li>
 
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -68,61 +69,193 @@
     <main class="main">
 
         <!-- Hero Section -->
-        <section id="hero" class="hero section dark-background">
+        <section id="home" class="hero section dark-background">
 
             <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
             <div class="container d-flex flex-column align-items-center">
-                <h2 data-aos="fade-up" data-aos-delay="100">PLAN. LAUNCH. GROW.</h2>
-                <p data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with
-                    Bootstrap</p>
+                <h2 data-aos="fade-up" data-aos-delay="100">CATATAN MOOD HARI INI</h2>
+                <p data-aos="fade-up" data-aos-delay="200">PAHAMI DIRI ANDA</p>
                 <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
                     <a href="#about" class="btn-get-started">Get Started</a>
-                    <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
+                    {{-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
                         class="glightbox btn-watch-video d-flex align-items-center"><i
-                            class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                            class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
                 </div>
             </div>
 
         </section><!-- /Hero Section -->
-        <section class="container-fluid">
+
+        <section class="jurnal">
+            <div class="container">
+                <div class="container section-title" data-aos="fade-up">
+                    {{-- <h2>Services</h2> --}}
+                    <p>Tambahkan mood hari ini<br></p>
+                </div><!-- End Section Title -->
+                <form class="row g-3">
+                    <div class="col-md-6">
+                        <label for="waktu" class="form-label">Waktu</label>
+                        <input type="date" class="form-control" id="waktu" name="waktu">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">Mood hari ini</label>
+                        <select id="inputState" class="form-select">
+                            <option selected>Choose...</option>
+                            <option>Senang</option>
+                            <option>Sedih</option>
+                            <option>Stress</option>
+                            <option>Netral</option>
+                            <option>Lelah</option>
+                            <option>Semangat</option>
+                            <option>Tenang</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4 ">
+                        <span class="input-group-text">Tambahkan Catatan</span>
+                        <textarea class="form-control" aria-label="With textarea" id="catatan" name="catatan"></textarea>
+                    </div>
+
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Services 2 Section -->
+        <section id="mood" class="services-2 section light-background">
+
+            <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 {{-- <h2>Services</h2> --}}
-                <p>Tambahkan mood hari ini<br></p>
+                <p>Mood Journey</p>
             </div><!-- End Section Title -->
-            <form class="row g-3">
-                <div class="col-md-6">
-                    <label for="inputEmail4" class="form-label">Waktu</label>
-                    <input type="date" class="form-control" id="inputEmail4">
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item d-flex position-relative h-100">
+                            <i class="bi bi-briefcase icon flex-shrink-0"></i>
+                            <div>
+                                <h4 class="title"><a href="#" class="stretched-link">Mood</a></h4>
+                                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas
+                                    molestias excepturi sint occaecati cupiditate non provident</p>
+                            </div>
+                        </div>
+                    </div><!-- End Service Item -->
+
                 </div>
 
-                <div class="col-md-4">
-                    <label for="inputState" class="form-label">Mood hari ini</label>
-                    <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>Senang</option>
-                        <option>Sedih</option>
-                        <option>Stress</option>
-                        <option>Netral</option>
-                        <option>Lelah</option>
-                        <option>Semangat</option>
-                        <option>Tenang</option>
-                    </select>
+            </div>
+
+        </section><!-- /Services 2 Section -->
+        <!-- Services 2 Section -->
+        <!-- Stats Section -->
+        <section id="wave" class="stats section light-background">
+
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <!-- Section Title -->
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Mood Wave</h2>
+                    <p>Ringkasan mood</p>
+                </div><!-- End Section Title -->
+
+                <div class="row gy-4 m-2 ">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="232"
+                                    data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Senang</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-frown color-orange flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="521"
+                                    data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Sedih</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-angry color-green flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="1463"
+                                    data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Stress</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-neutral color-pink flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="15"
+                                    data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Netral</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                </div>
+                <div class="row gy-4 m-2 justify-content-center">
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-expressionless color-blue flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="232"
+                                    data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Lelah</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-sunglasses color-orange flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="521"
+                                    data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Semangat</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stats-item d-flex align-items-center w-100 h-100">
+                            <i class="bi bi-emoji-smile color-green flex-shrink-0"></i>
+                            <div>
+                                <span data-purecounter-start="0" data-purecounter-end="1463"
+                                    data-purecounter-duration="1" class="purecounter"></span>
+                                <p>Tenang</p>
+                            </div>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+
+
                 </div>
 
-                <div class="col-md-4 ">
-                    <span class="input-group-text">Tambahkan Catatan</span>
-                    <textarea class="form-control" aria-label="With textarea"></textarea>
-                </div>
+            </div>
 
+        </section><!-- /Stats Section -->
 
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
-        </section>
-
-        <!-- About Section -->
+        {{-- <!-- About Section -->
         <section id="about" class="about section">
 
             <div class="container">
@@ -175,62 +308,7 @@
 
         </section><!-- /About Section -->
 
-        <!-- Stats Section -->
-        <section id="stats" class="stats section light-background">
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item d-flex align-items-center w-100 h-100">
-                            <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
-                            <div>
-                                <span data-purecounter-start="0" data-purecounter-end="232"
-                                    data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Happy Clients</p>
-                            </div>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item d-flex align-items-center w-100 h-100">
-                            <i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
-                            <div>
-                                <span data-purecounter-start="0" data-purecounter-end="521"
-                                    data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Projects</p>
-                            </div>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item d-flex align-items-center w-100 h-100">
-                            <i class="bi bi-headset color-green flex-shrink-0"></i>
-                            <div>
-                                <span data-purecounter-start="0" data-purecounter-end="1463"
-                                    data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Hours Of Support</p>
-                            </div>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item d-flex align-items-center w-100 h-100">
-                            <i class="bi bi-people color-pink flex-shrink-0"></i>
-                            <div>
-                                <span data-purecounter-start="0" data-purecounter-end="15"
-                                    data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Hard Workers</p>
-                            </div>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Stats Section -->
 
         <!-- Services Section -->
         <section id="services" class="services section">
@@ -514,91 +592,7 @@
 
         </section><!-- /Features Section -->
 
-        <!-- Services 2 Section -->
-        <section id="services-2" class="services-2 section light-background">
 
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>CHECK OUR SERVICES</p>
-            </div><!-- End Section Title -->
-
-            <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item d-flex position-relative h-100">
-                            <i class="bi bi-briefcase icon flex-shrink-0"></i>
-                            <div>
-                                <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
-                                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas
-                                    molestias excepturi sint occaecati cupiditate non provident</p>
-                            </div>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-item d-flex position-relative h-100">
-                            <i class="bi bi-card-checklist icon flex-shrink-0"></i>
-                            <div>
-                                <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
-                                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                    aliquip ex ea commodo consequat tarad limino ata</p>
-                            </div>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-item d-flex position-relative h-100">
-                            <i class="bi bi-bar-chart icon flex-shrink-0"></i>
-                            <div>
-                                <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a>
-                                </h4>
-                                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu fugiat nulla pariatur</p>
-                            </div>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-item d-flex position-relative h-100">
-                            <i class="bi bi-binoculars icon flex-shrink-0"></i>
-                            <div>
-                                <h4 class="title"><a href="#" class="stretched-link">Magni Dolores</a></h4>
-                                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                    qui officia deserunt mollit anim id est laborum</p>
-                            </div>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="service-item d-flex position-relative h-100">
-                            <i class="bi bi-brightness-high icon flex-shrink-0"></i>
-                            <div>
-                                <h4 class="title"><a href="#" class="stretched-link">Nemo Enim</a></h4>
-                                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                    blanditiis praesentium voluptatum deleniti atque</p>
-                            </div>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="service-item d-flex position-relative h-100">
-                            <i class="bi bi-calendar4-week icon flex-shrink-0"></i>
-                            <div>
-                                <h4 class="title"><a href="#" class="stretched-link">Eiusmod Tempor</a></h4>
-                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
-                                    libero tempore, cum soluta nobis est eligendi</p>
-                            </div>
-                        </div>
-                    </div><!-- End Service Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Services 2 Section -->
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials section dark-background">
@@ -1105,7 +1099,7 @@
 
             </div>
 
-        </section><!-- /Contact Section -->
+        </section><!-- /Contact Section --> --}}
 
     </main>
 
