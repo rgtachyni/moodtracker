@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Mood;
 use Illuminate\Http\Request;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,19 +11,22 @@ use Illuminate\Support\Facades\Schema;
 
 class formjurnalController extends Controller
 {
-    public function up()
+    public function index()
     {
-        Schema::create('jurnals', function (Blueprint $table) {
-            $table->id();
-            $table->date('waktu');
-            $table->string('mood');
-            $table->text('catatan')->nullable();
-            $table->timestamps();
-        });
+        $jurnals = Mood::all();
+        return view('jwelcome', compact('jurnals'));
     }
 
-    public function down()
+    public function store(Request $request)
     {
-        Schema::dropIfExists('jurnals');
+        $request->validate([
+            'waktu' => 'required|date',
+            'mood' => 'required|string',
+            'catatan' => 'nullable|string',
+        ]);
+
+        Mood::create($request->all());
+
+        return redirect()->back()->with('success', 'Data jurnal berhasil disimpan!');
     }
 }

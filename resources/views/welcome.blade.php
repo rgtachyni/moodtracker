@@ -60,8 +60,8 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="cta-btn" href="index.html#about">Login</a>
-            <a class="cta-btn" href="index.html#about">Register</a>
+            {{-- <a class="cta-btn" href="{{'/'}}">Login</a> --}}
+            <a class="cta-btn" href="logout">logout</a>
 
         </div>
     </header>
@@ -77,10 +77,8 @@
                 <h2 data-aos="fade-up" data-aos-delay="100">CATATAN MOOD HARI INI</h2>
                 <p data-aos="fade-up" data-aos-delay="200">PAHAMI DIRI ANDA</p>
                 <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                    <a href="#about" class="btn-get-started">Get Started</a>
-                    {{-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
-                        class="glightbox btn-watch-video d-flex align-items-center"><i
-                            class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
+                    <a href="#jurnal" class="btn-get-started">Mood Tracker</a>
+
                 </div>
             </div>
 
@@ -92,7 +90,8 @@
                     {{-- <h2>Services</h2> --}}
                     <p>Tambahkan mood hari ini<br></p>
                 </div><!-- End Section Title -->
-                <form class="row g-3">
+                <form action="{{ route('jurnal.store') }}" method="POST" class="row g-3">
+                    @csrf
                     <div class="col-md-6">
                         <label for="waktu" class="form-label">Waktu</label>
                         <input type="date" class="form-control" id="waktu" name="waktu">
@@ -100,7 +99,7 @@
 
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Mood hari ini</label>
-                        <select id="inputState" class="form-select">
+                        <select id="inputState" class="form-select" id="mood" name="mood">
                             <option selected>Choose...</option>
                             <option>Senang</option>
                             <option>Sedih</option>
@@ -134,22 +133,23 @@
             </div><!-- End Section Title -->
 
             <div class="container">
+                @foreach ($data as $datas)
+                    <div class="row gy-4">
 
-                <div class="row gy-4">
-
-                    <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-item d-flex position-relative h-100">
-                            <i class="bi bi-briefcase icon flex-shrink-0"></i>
-                            <div>
-                                <h4 class="title"><a href="#" class="stretched-link">Mood</a></h4>
-                                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas
-                                    molestias excepturi sint occaecati cupiditate non provident</p>
+                        <div class="col-md-12" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-item d-flex position-relative h-100">
+                                <i class="bi bi-briefcase icon flex-shrink-0"></i>
+                                <div>
+                                    <h4 class="title"><a href="#"
+                                            class="stretched-link">{{ $datas->mood }}</a></h4>
+                                    <p class="description">{{ $datas->waktu }}</p>
+                                    <p class="description">{{ $datas->catatan }}t</p>
+                                </div>
                             </div>
-                        </div>
-                    </div><!-- End Service Item -->
+                        </div><!-- End Service Item -->
 
-                </div>
-
+                    </div>
+                @endforeach
             </div>
 
         </section><!-- /Services 2 Section -->
@@ -171,8 +171,10 @@
                         <div class="stats-item d-flex align-items-center w-100 h-100">
                             <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="232"
+                                <span data-purecounter-start="0"
+                                    data-purecounter-end="{{ $dataCounst['Semangat'] ?? 0 }}"
                                     data-purecounter-duration="1" class="purecounter"></span>
+
                                 <p>Senang</p>
                             </div>
                         </div>
@@ -182,7 +184,8 @@
                         <div class="stats-item d-flex align-items-center w-100 h-100">
                             <i class="bi bi-emoji-frown color-orange flex-shrink-0"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="521"
+                                <span data-purecounter-start="0"
+                                    data-purecounter-end="{{ $dataCounst['Sedih'] ?? 0 }}"
                                     data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Sedih</p>
                             </div>
@@ -193,7 +196,8 @@
                         <div class="stats-item d-flex align-items-center w-100 h-100">
                             <i class="bi bi-emoji-angry color-green flex-shrink-0"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="1463"
+                                <span data-purecounter-start="0"
+                                    data-purecounter-end="{{ $dataCounst['Setress'] ?? 0 }}"
                                     data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Stress</p>
                             </div>
@@ -204,7 +208,8 @@
                         <div class="stats-item d-flex align-items-center w-100 h-100">
                             <i class="bi bi-emoji-neutral color-pink flex-shrink-0"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="15"
+                                <span data-purecounter-start="0"
+                                    data-purecounter-end="{{ $dataCounst['Netral'] ?? 0 }}"
                                     data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Netral</p>
                             </div>
@@ -218,7 +223,8 @@
                         <div class="stats-item d-flex align-items-center w-100 h-100">
                             <i class="bi bi-emoji-expressionless color-blue flex-shrink-0"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="232"
+                                <span data-purecounter-start="0"
+                                    data-purecounter-end="{{ $dataCounst['Lelah'] ?? 0 }}"
                                     data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Lelah</p>
                             </div>
@@ -229,7 +235,8 @@
                         <div class="stats-item d-flex align-items-center w-100 h-100">
                             <i class="bi bi-emoji-sunglasses color-orange flex-shrink-0"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="521"
+                                <span data-purecounter-start="0"
+                                    data-purecounter-end="{{ $dataCounst['Semangat'] ?? 0 }}"
                                     data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Semangat</p>
                             </div>
@@ -240,7 +247,8 @@
                         <div class="stats-item d-flex align-items-center w-100 h-100">
                             <i class="bi bi-emoji-smile color-green flex-shrink-0"></i>
                             <div>
-                                <span data-purecounter-start="0" data-purecounter-end="1463"
+                                <span data-purecounter-start="0"
+                                    data-purecounter-end="{{ $dataCounst['Tenang'] ?? 0 }}"
                                     data-purecounter-duration="1" class="purecounter"></span>
                                 <p>Tenang</p>
                             </div>
@@ -1105,74 +1113,11 @@
 
     <footer id="footer" class="footer dark-background">
 
-        <div class="container footer-top">
-            <div class="row gy-4">
-                <div class="col-lg-4 col-md-6 footer-about">
-                    <a href="index.html" class="logo d-flex align-items-center">
-                        <span class="sitename">Mood Tracker</span>
-                    </a>
-                    <div class="footer-contact pt-3">
-                        <p>A108 Adam Street</p>
-                        <p>New York, NY 535022</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-                        <p><strong>Email:</strong> <span>info@example.com</span></p>
-                    </div>
-                    <div class="social-links d-flex mt-4">
-                        <a href=""><i class="bi bi-twitter-x"></i></a>
-                        <a href=""><i class="bi bi-facebook"></i></a>
-                        <a href=""><i class="bi bi-instagram"></i></a>
-                        <a href=""><i class="bi bi-linkedin"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-2 col-md-3 footer-links">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-4 col-md-12 footer-newsletter">
-                    <h4>Our Newsletter</h4>
-                    <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-                    <form action="forms/newsletter.php" method="post" class="php-email-form">
-                        <div class="newsletter-form"><input type="email" name="email"><input type="submit"
-                                value="Subscribe"></div>
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
 
         <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1 sitename">Dewi</strong> <span>All Rights Reserved</span>
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">Mood Tracker</strong> <span></span>
             </p>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a
-                    href=“https://themewagon.com>ThemeWagon
-            </div>
+
         </div>
 
     </footer>

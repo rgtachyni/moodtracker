@@ -12,7 +12,9 @@ class Mood extends Model
     protected $table = 'moods'; // nama tabel
 
     protected $fillable = [
-        'tgl',
+
+        'waktu',
         'mood',
+        'catatan',
     ];
 }

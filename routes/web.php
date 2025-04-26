@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\jurnalController;
+use App\Http\Controllers\formjurnalController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,15 @@ use App\Http\Controllers\jurnalController;
 |
 */
 
-Route::get('/index', function () {
-    return view('welcome');
-});
 
 Route::get('/register', [jurnalController::class, 'register'])->name('register');
 Route::post('/register/proses', [jurnalController::class, 'prosesRegister'])->name('prosesRegister');
 
 Route::get('/', [jurnalController::class, 'login'])->name('login');
 Route::post('/login/proses', [jurnalController::class, 'proseslogin'])->name('proseslogin');
+
+Route::get('/jurnal', [formjurnalController::class, 'index'])->name('jurnal.index');
+Route::post('/jurnal', [formjurnalController::class, 'store'])->name('jurnal.store');
+
+Route::get('/index', [jurnalController::class, 'index'])->name('index');
+Route::get('/logout', [jurnalController::class, 'logout'])->name('logout');
