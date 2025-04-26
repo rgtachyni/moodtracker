@@ -18,6 +18,8 @@ Route::get('/index', function () {
     return view('welcome');
 });
 
-Route::get('/register', [jurnalController::class, 'register']);
-Route::post('/register/proses', [jurnalController::class, 'prosesRegister']);
-Route::get('/', [jurnalController::class, 'login']);
+Route::get('/register', [jurnalController::class, 'register'])->name('register');
+Route::post('/register/proses', [jurnalController::class, 'prosesRegister'])->name('prosesRegister');
+
+Route::get('/', [jurnalController::class, 'login'])->name('login');
+Route::post('/login/proses', [jurnalController::class, 'proseslogin'])->name('proseslogin');
